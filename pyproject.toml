@@ -1,0 +1,34 @@
+[project]
+name = "lf-dbt"
+version = "0.1.0"
+description = "UV Project to fix Python and DBT dependencies"
+readme = "README.md"
+authors = [
+  {name = "F. Paul Spitzner", email = "paul.spitzner@linkfish.eu"},
+]
+requires-python = ">=3.12,<3.13" # 2025-12-08: 3.13 macht noch Probleme mit unseren Paketen
+dependencies = [
+    "numpy",
+    "scipy",
+    "sqlalchemy",
+    "pandas",
+    "polars",
+    "typer",
+    "python-dotenv",
+    "ruamel-yaml",
+    # DBT
+    "dbt-core>=1.9.8,<1.10", # Usually limited by our dbt-sqlserver dependency
+    "dbt-duckdb>=1.9.4,<1.10",
+    "dbt-sqlserver>=1.9.0",
+    "dbt-postgres>=1.9.0,<1.10",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[dependency-groups]
+dev-dependencies = [
+    "ruff",
+    "typing_extensions",
+]

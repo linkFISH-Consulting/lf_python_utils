@@ -1,0 +1,21 @@
+
+services:
+    lf-dbt:
+        container_name: lf-dbt
+        image: lf-dbt
+        hostname: lf-dbt-container
+        build:
+            context: .
+            dockerfile: Dockerfile
+        restart: no
+        # group_add:
+        #     - 1000 # add extra groups to users inside the container for file permissions
+        environment:
+            USER_ID: 1000
+            GROUP_ID: 1000
+        # update as needed to make dbt project and data available
+        # in our case, it often helps to use same path inside and out
+        # volumes:
+        #     - /config/:/config/
+        #     - /repo/:/repo/
+        #     - /data/:/data/
