@@ -104,6 +104,8 @@ uv pip compile pyproject.toml -o requirements.txt
 
 - Open PR
 
+- Note: Dont forget to run `uv sync`, even after you only bumped our own version `pyproject.toml`.
+
 
 ## Useful UV Commands
 
