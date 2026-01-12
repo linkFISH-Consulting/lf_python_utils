@@ -52,6 +52,29 @@ docker run -it --rm --workdir /coasti/products/haushaltplus \
     lf-dbt bash -c "$INIT_CMD dbt version"
 ```
 
+## Using with Conda
+
+We keep the requirements.txt up to date with _locked_ Versions of all packages,
+so you can simply include it in your Conda environment.
+
+Once we establish releases, we will have a specific URL for each version of our
+`lf_python_utils`, and by pinning that one, you will also pin dependencies.
+
+```yaml
+# environment.yml
+
+# create env via:
+# conda env create -f environment.yml -n my_env_name
+name: dbt_playground
+channels:
+  - conda-forge
+dependencies:
+  - python=3.12
+  - pip
+  - pip:
+    - -r https://raw.githubusercontent.com/linkFISH-Consulting/lf_python_utils/main/requirements.txt
+```
+
 ## Updating Dependencies in this Repo
 
 - Clone to your Device
